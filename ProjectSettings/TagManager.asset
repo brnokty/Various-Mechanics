@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Body
+  - PaperShredder
   layers:
   - Default
   - TransparentFX
