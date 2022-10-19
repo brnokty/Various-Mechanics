@@ -22,6 +22,7 @@ public class PaperShredder : MonoBehaviour
                 {
                     Destroy(money.gameObject);
                     hider.SetActive(false);
+                    MoneyManager.Instance.GetNewMoney();
                 });
             });
         });
