@@ -18,7 +18,11 @@ public class Cips : MonoBehaviour
         transform.DOLocalMove(poses[0].localPosition, 0.2f).OnComplete(() =>
         {
             transform.DOScale(Vector3.zero, 0.09f);
-            transform.DOLocalMove(poses[1].localPosition, 0.1f).OnComplete(() => { Destroy(gameObject, 0.1f); });
+            transform.DOLocalMove(poses[1].localPosition, 0.1f).OnComplete(() =>
+            {
+                GameController.Instance.CipsControl();
+                Destroy(gameObject, 0.1f);
+            });
         });
     }
 }
