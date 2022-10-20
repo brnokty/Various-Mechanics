@@ -8,17 +8,28 @@ using Random = UnityEngine.Random;
 
 public class Money : MonoBehaviour
 {
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private MeshRenderer meshRenderer;
     [SerializeField] private List<GameObject> subObjects = new List<GameObject>();
     [SerializeField] private bool isReal;
+    [SerializeField] private bool isUseable;
+
+    #endregion
+
+    #region PRIVATE PROPERTIES
+
     private Vector3 screenPoint;
     private Vector3 startPos;
     private Tween rotateTween;
     private PaperShredder _paperShredder;
     private MoneyStack _moneyStack;
-    [SerializeField] private bool isUseable;
     private bool isDragable;
     private Tween lastTween;
+
+    #endregion
+
+    #region UNITY METHODS
 
     private void Start()
     {
@@ -26,6 +37,10 @@ public class Money : MonoBehaviour
         startPos = transform.position;
         ChooseRealOrFake();
     }
+
+    #endregion
+
+    #region PUBLIC METHODS
 
     public bool GetIsReal()
     {
@@ -66,6 +81,18 @@ public class Money : MonoBehaviour
         }
     }
 
+    public void HideSubObjects()
+    {
+        meshRenderer.shadowCastingMode = ShadowCastingMode.Off;
+        for (int i = 0; i < subObjects.Count; i++)
+        {
+            subObjects[i].SetActive(false);
+        }
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
 
     private void OnMouseDown()
     {
@@ -153,12 +180,5 @@ public class Money : MonoBehaviour
         }
     }
 
-    public void HideSubObjects()
-    {
-        meshRenderer.shadowCastingMode = ShadowCastingMode.Off;
-        for (int i = 0; i < subObjects.Count; i++)
-        {
-            subObjects[i].SetActive(false);
-        }
-    }
+    #endregion
 }

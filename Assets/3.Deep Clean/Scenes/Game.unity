@@ -1355,7 +1355,7 @@ MonoBehaviour:
   async: 1
   downsampleSteps: 3
   registeredPaintableTexture: {fileID: 750323163}
-  cooldown: -65.449524
+  cooldown: -68.29607
   currentReader:
     dirty: 0
     requested: 0
@@ -1717,7 +1717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.319273, y: 0.35958758, z: -0.13245997, w: 0.8667271}
-  m_LocalPosition: {x: -11.93, y: 7.33, z: -2.12}
+  m_LocalPosition: {x: -12.46, y: 7.96, z: -2.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

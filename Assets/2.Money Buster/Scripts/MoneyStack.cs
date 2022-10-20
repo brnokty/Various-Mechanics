@@ -6,13 +6,34 @@ using UnityEngine;
 
 public class MoneyStack : MonoBehaviour
 {
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private List<Money> moneyDeck = new List<Money>();
+
+    #endregion
+
+    #region UNITY METHODS
 
     private void Start()
     {
         StartCoroutine(SortMoneys());
     }
 
+    #endregion
+
+    #region PUBLIC METHODS
+
+    public void AddMoney(Money money)
+    {
+        moneyDeck.Add(money);
+        money.transform.SetParent(transform);
+        StartCoroutine(SortMoneys());
+        MoneyManager.Instance.GetNewMoney();
+    }
+
+    #endregion
+
+    #region PRIVATE METHODS
 
     private IEnumerator SortMoneys()
     {
@@ -27,11 +48,5 @@ public class MoneyStack : MonoBehaviour
         }
     }
 
-    public void AddMoney(Money money)
-    {
-        moneyDeck.Add(money);
-        money.transform.SetParent(transform);
-        StartCoroutine(SortMoneys());
-        MoneyManager.Instance.GetNewMoney();
-    }
+    #endregion
 }

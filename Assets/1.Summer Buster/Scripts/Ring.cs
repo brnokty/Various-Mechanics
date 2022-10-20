@@ -14,20 +14,35 @@ public enum RingColor
 
 public class Ring : MonoBehaviour
 {
-    private Vector3 screenPoint;
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private RingColor _ringColor;
     [SerializeField] private List<GameObject> _rings = new List<GameObject>();
-    private Outline _outline;
     [SerializeField] private bool _isHighestRing;
+
+    #endregion
+
+    #region PRIVATE PROPERTIES
+
+    private Vector3 screenPoint;
+    private Outline _outline;
     private Body _body;
     private Body _newBody;
     private Vector3 lastPos;
+
+    #endregion
+
+    #region UNITY METHODS
 
     private void Start()
     {
         SetRing(_ringColor);
         SetLastPos(transform.position);
     }
+
+    #endregion
+
+    #region PUBLIC METHODS
 
     public void SetBody(Body body)
     {
@@ -61,6 +76,9 @@ public class Ring : MonoBehaviour
         _isHighestRing = value;
     }
 
+    #endregion
+
+    #region PRIVATE METHODS
 
     private void OnMouseDown()
     {
@@ -115,4 +133,6 @@ public class Ring : MonoBehaviour
             _newBody = other.GetComponent<Body>();
         }
     }
+
+    #endregion
 }

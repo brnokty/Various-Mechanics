@@ -8,15 +8,30 @@ using UnityEngine.Serialization;
 
 public class MoneyDesk : MonoBehaviour
 {
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private Transform moneyDefaultTrasform;
     [SerializeField] private List<Money> moneyDeck = new List<Money>();
+
+    #endregion
+
+    #region PUBLIC PROPERTIES
+
     public UnityEvent NewMoneyEvent;
+
+    #endregion
+
+    #region UNITY METHODS
 
     private void Start()
     {
         NewMoneyEvent.AddListener(GetNewMoney);
         SortMoneys();
     }
+
+    #endregion
+
+    #region PUBLIC METHODS
 
     public void SortMoneys()
     {
@@ -28,14 +43,23 @@ public class MoneyDesk : MonoBehaviour
 
     public void GetNewMoney()
     {
-        var tempMoney = moneyDeck[0];
-        moneyDeck.RemoveAt(0);
-        tempMoney.transform.SetParent(null);
-        tempMoney.transform.DOJump(moneyDefaultTrasform.position, 3, 1, 1f).OnComplete(() =>
+        if (moneyDeck.Count <= 0)
         {
-            tempMoney.SetMoneyUseable(true);
-        });
-        tempMoney.transform.DORotate(moneyDefaultTrasform.rotation.eulerAngles, 1f);
-        tempMoney.SetStartPosition(moneyDefaultTrasform.position);
+            UIManager.Instance.Win();
+        }
+        else
+        {
+            var tempMoney = moneyDeck[0];
+            moneyDeck.RemoveAt(0);
+            tempMoney.transform.SetParent(null);
+            tempMoney.transform.DOJump(moneyDefaultTrasform.position, 3, 1, 1f).OnComplete(() =>
+            {
+                tempMoney.SetMoneyUseable(true);
+            });
+            tempMoney.transform.DORotate(moneyDefaultTrasform.rotation.eulerAngles, 1f);
+            tempMoney.SetStartPosition(moneyDefaultTrasform.position);
+        }
     }
+
+    #endregion
 }

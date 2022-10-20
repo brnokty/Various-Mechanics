@@ -6,7 +6,13 @@ using UnityEngine;
 
 public class Body : MonoBehaviour
 {
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private List<Ring> ringList = new List<Ring>();
+
+    #endregion
+
+    #region UNITY METHODS
 
     private void Start()
     {
@@ -15,6 +21,10 @@ public class Body : MonoBehaviour
             ringList[i].SetBody(this);
         }
     }
+
+    #endregion
+
+    #region PUBLIC METHODS
 
     public List<Ring> GetRingList()
     {
@@ -38,7 +48,7 @@ public class Body : MonoBehaviour
                     _ring.transform.DOMoveY(1.5f + (ringList.Count - 1) * 1.75f, 0.3f).SetEase(Ease.OutBounce)
                         .OnComplete(() => { _ring.SetLastPos(_ring.transform.position); });
                 });
-              
+
                 return true;
             }
         }
@@ -51,7 +61,7 @@ public class Body : MonoBehaviour
                 _ring.transform.DOMoveY(1.5f + (ringList.Count - 1) * 1.75f, 0.3f).SetEase(Ease.OutBounce)
                     .OnComplete(() => { _ring.SetLastPos(_ring.transform.position); });
             });
-           
+
             return true;
         }
 
@@ -67,4 +77,6 @@ public class Body : MonoBehaviour
         if (ringList.Count > 0)
             ringList[ringList.Count - 1].SetHighest(true);
     }
+
+    #endregion
 }

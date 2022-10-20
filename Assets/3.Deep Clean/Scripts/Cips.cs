@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class Cips : MonoBehaviour
 {
+    #region PRIVATE PROPERTIES
+
     private bool isCollected;
+
+    #endregion
+
+    #region PUBLIC METHODS
 
     public void GoInside(Transform vacuum, List<Transform> poses)
     {
@@ -25,4 +31,6 @@ public class Cips : MonoBehaviour
             });
         });
     }
+
+    #endregion
 }

@@ -6,16 +6,30 @@ using UnityEngine.Events;
 
 public class RingManager : MonoBehaviour
 {
-    public static RingManager Instance;
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private List<Body> bodys = new List<Body>();
+
+    #endregion
+
+    #region PUBLIC PROPERTIES
+
+    public static RingManager Instance;
     [HideInInspector] public UnityEvent ChangeRingBody;
 
+    #endregion
+
+    #region UNITY METHODS
 
     private void Awake()
     {
         Instance = this;
         ChangeRingBody.AddListener(ControlBodys);
     }
+
+    #endregion
+
+    #region PUBLIC METHODS
 
     public void ControlBodys()
     {
@@ -45,6 +59,8 @@ public class RingManager : MonoBehaviour
             }
         }
 
-        print("Winnn");
+        UIManager.Instance.Win();
     }
+
+    #endregion
 }

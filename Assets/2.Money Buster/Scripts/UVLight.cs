@@ -6,31 +6,29 @@ using UnityEngine;
 
 public class UVLight : MonoBehaviour
 {
-    public GameObject[] ObjMasked;
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private GameObject _UVLight;
+
+    #endregion
+
+    #region PRIVATE PROPERTIES
+
     private Vector3 screenPoint;
     private Vector3 startPos;
+
+    #endregion
+
+    #region UNITY METHODS
 
     void Start()
     {
         startPos = transform.position;
-        for (int i = 0; i < ObjMasked.Length; i++)
-        {
-            ObjMasked[i].GetComponent<MeshRenderer>().material.renderQueue = 3002;
-        }
     }
 
+    #endregion
 
-    // void Update()
-    // {
-    //     Vector3 mouse = Input.mousePosition;
-    //     Ray castPoint = Camera.main.ScreenPointToRay(mouse);
-    //     RaycastHit hit;
-    //     if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
-    //     {
-    //         transform.position = hit.point;
-    //     }
-    // }
+    #region PRIVATE METHODS
 
     private void OnMouseDown()
     {
@@ -55,4 +53,6 @@ public class UVLight : MonoBehaviour
 
         transform.position = pos;
     }
+
+    #endregion
 }

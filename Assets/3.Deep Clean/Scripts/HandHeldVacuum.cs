@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class HandHeldVacuum : MonoBehaviour
 {
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private List<Transform> poses = new List<Transform>();
 
+    #endregion
+
+    #region UNITY METHODS
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,4 +20,6 @@ public class HandHeldVacuum : MonoBehaviour
             other.GetComponent<Cips>().GoInside(transform, poses);
         }
     }
+
+    #endregion
 }

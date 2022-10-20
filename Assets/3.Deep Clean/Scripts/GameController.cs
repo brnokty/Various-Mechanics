@@ -7,7 +7,8 @@ using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController Instance;
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private Transform handVacuum;
     [SerializeField] private Transform waterVacuum;
     [SerializeField] private float lerpSpeed;
@@ -15,14 +16,26 @@ public class GameController : MonoBehaviour
     [SerializeField] private float turnLerpSpeed;
     [SerializeField] private List<P3dChangeCounter> dirtChangeCounters = new List<P3dChangeCounter>();
 
-    private Transform activeVacuum;
+    #endregion
 
+    #region PUBLIC PROPERTIES
+
+    public static GameController Instance;
+
+    #endregion
+
+    #region PRIVATE PROPERTIES
+
+    private Transform activeVacuum;
     private Vector3 mouseFirstPosition;
     private Vector3 activeVacuumFirstPosition;
     private Vector3 distanceVector;
     private bool isWaterVacuum;
     private bool isOver;
 
+    #endregion
+
+    #region UNITY METHODS
 
     private void Awake()
     {
@@ -90,6 +103,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region PUBLIC METHODS
 
     public void CipsControl()
     {
@@ -128,4 +144,6 @@ public class GameController : MonoBehaviour
             isOver = true;
         }
     }
+
+    #endregion
 }

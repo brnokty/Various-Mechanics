@@ -6,7 +6,13 @@ using UnityEngine;
 
 public class PaperShredder : MonoBehaviour
 {
+    #region INSPECTOR PROPERTIES
+
     [SerializeField] private GameObject hider;
+
+    #endregion
+
+    #region PUBLIC METHODS
 
     public void DestroyMoney(Money money)
     {
@@ -27,4 +33,6 @@ public class PaperShredder : MonoBehaviour
             });
         });
     }
+
+    #endregion
 }
