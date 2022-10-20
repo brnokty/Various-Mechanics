@@ -6752,6 +6752,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water_Vacuum
       objectReference: {fileID: 0}
+    - target: {fileID: 5818272931685506924, guid: 38fa4f1e8d7533942b830c12ef4f3813, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5818272931685506925, guid: 38fa4f1e8d7533942b830c12ef4f3813, type: 3}
       propertyPath: m_RootOrder
       value: 9
