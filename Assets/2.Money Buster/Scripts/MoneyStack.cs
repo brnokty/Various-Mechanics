@@ -12,14 +12,14 @@ public class MoneyStack : MonoBehaviour
 
     #endregion
 
-    #region UNITY METHODS
-
-    private void Start()
-    {
-        StartCoroutine(SortMoneys());
-    }
-
-    #endregion
+    // #region UNITY METHODS
+    //
+    // private void Start()
+    // {
+    //     StartCoroutine(SortMoneys());
+    // }
+    //
+    // #endregion
 
     #region PUBLIC METHODS
 
@@ -28,7 +28,7 @@ public class MoneyStack : MonoBehaviour
         moneyDeck.Add(money);
         money.transform.SetParent(transform);
         StartCoroutine(SortMoneys());
-        MoneyManager.Instance.GetNewMoney();
+       
     }
 
     #endregion
@@ -46,6 +46,8 @@ public class MoneyStack : MonoBehaviour
             moneyDeck[i].transform.DOLocalMove(new Vector3(0, -1.2f + i * 0.1f, 0), waitTime);
             yield return new WaitForSeconds(waitTime + 0.01f);
         }
+        
+        MoneyManager.Instance.GetNewMoney();
     }
 
     #endregion

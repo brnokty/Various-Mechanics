@@ -110,11 +110,14 @@ public class GameController : MonoBehaviour
     public void CipsControl()
     {
         var list = GameObject.FindObjectsOfType<Cips>();
-        print(list.Length);
-        if (list.Length <= 1)
+
+        for (int i = 0; i < list.Length; i++)
         {
-            ChangeVacuum(1);
+            if (!list[i].GetIsCollected())
+                return;
         }
+
+        ChangeVacuum(1);
     }
 
     public void ChangeVacuum(int value)
@@ -132,13 +135,17 @@ public class GameController : MonoBehaviour
             waterVacuum.gameObject.SetActive(true);
             handVacuum.gameObject.SetActive(false);
         }
+
+        mouseFirstPosition = Input.mousePosition;
+        activeVacuumFirstPosition = activeVacuum.position;
+        distanceVector = Vector3.zero;
     }
 
     public void DirtControl()
     {
         var ratio = P3dChangeCounter.GetRatio(dirtChangeCounters);
         print("Ratio : " + ratio);
-        if (ratio > 0.98f)
+        if (ratio > 0.99f)
         {
             UIManager.Instance.Win();
             isOver = true;
